@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import User from "../../../models/User.model.js";
 import asyncHandler from "../../../middleware/asyncHandler.js";
-import ApiError from "../../../utils/apiErrror.js";
+import ApiError from "../../../utils/ApiError.js";
 import productModel from "../../../models/Product.model.js";
 import {
   generateAccessToken,
