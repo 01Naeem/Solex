@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import ApiError from "../utils/ApiErrror.js";
+import ApiError from "../utils/ApiError.js";
 import User from "../models/User.model.js";
 import { config } from "../config/env.js";
 
