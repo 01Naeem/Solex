@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+.checkout-input {
+    @apply w-full h-14 px-5 rounded-2xl bg-[#0f0f12] border border-white/10 text-white outline-none focus:border-[#ff3c00] transition-all duration-300;
+}
+
+.checkout-radio {
+    @apply flex items-center gap-4 p-5 rounded-2xl border border-white/10 bg-[#0f0f12] cursor-pointer transition-all duration-300 hover:border-[#ff3c00];
+}
+
+.checkout-payment {
+    @apply w-full flex items-center justify-between p-5 rounded-2xl border border-white/10 bg-[#0f0f12] transition-all duration-300 hover:border-[#ff3c00];
+}
+
+.checkout-row {
+    @apply flex justify-between text-[15px] text-white/70;
+}
+
+.payment-row {
+  @apply flex items-center justify-between
+  text-[15px] text-white/70;
+}
