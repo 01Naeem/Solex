@@ -9,7 +9,7 @@
 
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+import dotenv, { config } from "dotenv";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 // ─────────────────────────────────────────────────────────────
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: config.CLIENT_URL_PROD,
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -101,6 +101,7 @@ app.use("/api/admin", authenticate, productRoutes);
 
 // Payment routes
 app.use("/api/payments", paymentRoutes);
+
 
 // ─────────────────────────────────────────────────────────────
 // 9. 404 Handler
