@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import User from "../../../models/User.model.js";
-import ApiError from "../../../utils/ApiErrror.js";
+import ApiError from "../../../utils/ApiError.js";
 import { config } from "../../../config/env.js";
 
 const router = express.Router();
