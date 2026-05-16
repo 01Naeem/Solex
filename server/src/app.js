@@ -8,8 +8,9 @@
  */
 
 import express from "express";
+import dotenv from "dotenv"
 import cors from "cors";
-import dotenv, { config } from "dotenv";
+import { config } from "./config/env.js";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 
@@ -25,9 +26,9 @@ import paymentRoutes from "../src/api/v1/payment/payment.routes.js";
 import authRefreshRoutes from "./api/v1/auth/auth.refresh.routes.js"; // ← NEW
 
 // Load env
-dotenv.config();
 
 const app = express();
+dotenv.config();
 
 // ─────────────────────────────────────────────────────────────
 // 1. Security Headers
@@ -51,7 +52,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 // ─────────────────────────────────────────────────────────────
@@ -63,10 +64,7 @@ app.use(cookieParser());
 // 5. Razorpay Webhook Route
 // MUST COME BEFORE express.json()
 // ─────────────────────────────────────────────────────────────
-app.use(
-  "/api/payments/webhook",
-  express.raw({ type: "application/json" })
-);
+app.use("/api/payments/webhook", express.raw({ type: "application/json" }));
 
 // ─────────────────────────────────────────────────────────────
 // 6. JSON Parsers
@@ -102,7 +100,6 @@ app.use("/api/admin", authenticate, productRoutes);
 // Payment routes
 app.use("/api/payments", paymentRoutes);
 
-
 // ─────────────────────────────────────────────────────────────
 // 9. 404 Handler
 // ─────────────────────────────────────────────────────────────
@@ -129,7 +126,7 @@ const startServer = async () => {
     const PORT = process.env.PORT || 5000;
 
     app.listen(PORT, () => {
-      console.log(`🚀 Solex server running on http://localhost:${PORT}`);
+      console.log(`🚀 Solex server running on ${PORT}`);
     });
   } catch (err) {
     console.error("❌ Failed to start server:", err);
