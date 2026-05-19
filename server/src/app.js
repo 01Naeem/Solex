@@ -48,7 +48,10 @@ app.use((req, res, next) => {
 // ─────────────────────────────────────────────────────────────
 app.use(
   cors({
-    origin: config.CLIENT_URL_PROD,
+    origin: [
+      config.CLIENT_URL,
+      config.CLIENT_URL_PROD
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
