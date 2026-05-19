@@ -79,7 +79,7 @@ export const signupUser = asyncHandler(async (req, res) => {
   const cookieOptions = {
     httpOnly: true,
     secure: config.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "none",
     path: "/",
     ...(config.NODE_ENV === "production" && {
       domain: config.COOKIE_DOMAIN,
@@ -194,7 +194,7 @@ export const loginUser = asyncHandler(async (req, res) => {
   const cookieOptions = {
     httpOnly: true,
     secure: config.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "none",
     path: "/",
     ...(config.NODE_ENV === "production" && {
       domain: config.COOKIE_DOMAIN,
@@ -224,9 +224,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 export const getProducts = asyncHandler(async (req, res) => {
   // For demonstration, returning static data. Replace with DB query in production.
   try {
-    const products = await productModel
-      .find()
-      .sort({ createdAt: -1 })
+    const products = await productModel.find().sort({ createdAt: -1 });
     res.status(200).json({
       success: true,
       data: products,
