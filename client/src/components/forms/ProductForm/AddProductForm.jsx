@@ -647,7 +647,10 @@ export default function AddProductForm({ darkMode: dmProp = false }) {
         `${import.meta.env.VITE_API_BASE_URL}/admin/products/add`,
         fd,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
           onUploadProgress: (e) => {
             setProgress(Math.round((e.loaded / e.total) * 100));
           },
